@@ -1,0 +1,85 @@
+/* Center the chat container */
+.chat-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  font-family: Arial, sans-serif;
+}
+
+/* Chat container */
+.chat-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Heading */
+.chat-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
+  font-size: 24px;
+}
+
+/* Messages box */
+.message-box {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  height: 300px;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual message */
+.message {
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+  display: inline-block;
+}
+
+/* Input container */
+.input-container {
+  display: flex;
+  gap: 10px;
+}
+
+/* Input field */
+.input-container input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+/* Send button */
+.input-container button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.input-container button:hover {
+  background-color: #0056b3;
+}

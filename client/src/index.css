@@ -25,10 +25,13 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;           /* full viewport height */
+  background-color: #242424; /* or your theme */
 }
+
 
 h1 {
   font-size: 3.2em;
