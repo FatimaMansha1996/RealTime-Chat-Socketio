@@ -41,16 +41,32 @@
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
-/* Individual message */
+/* Base message style */
 .message {
-  padding: 8px 12px;
-  margin-bottom: 8px;
+  padding: 10px 14px;
   border-radius: 12px;
-  max-width: 80%;
+  max-width: 75%;
   word-wrap: break-word;
-  display: inline-block;
+  font-size: 14px;
+}
+
+/* My messages (right side) */
+.my-message {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+/* Other users' messages (left side) */
+.other-message {
+  align-self: flex-start;
+  background-color: #67da8b;
+  color: #000;
+  border-bottom-left-radius: 4px;
 }
 
 /* Input container */

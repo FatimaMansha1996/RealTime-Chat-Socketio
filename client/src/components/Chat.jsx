@@ -9,34 +9,31 @@ export default function Chat() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
-  // Temporary username for this client
-  const username = "You";
-
   // Listen for messages from server
   useEffect(() => {
     socket.on("receiveMessage", (data) => {
       setMessages((prev) => [...prev, data]);
 
-      // Auto-scroll to the latest message
+      // Auto-scroll to latest message
       const messageBox = document.getElementById("messageBox");
       if (messageBox) {
         messageBox.scrollTop = messageBox.scrollHeight;
       }
     });
 
-    // Clean up the socket listener on unmount
-    return () => {
-      socket.off("receiveMessage");
-    };
+    return () => socket.off("receiveMessage");
   }, []);
 
-  // Send message to server
+  // Send message
   const sendMessage = () => {
     if (message.trim() === "") return;
 
-    // Emit message with username
-    socket.emit("sendMessage", { username, text: message });
-    setMessage(""); // Clear input field
+    socket.emit("sendMessage", {
+      text: message,
+      senderId: socket.id, // 👈 unique per client
+    });
+
+    setMessage("");
   };
 
   return (
@@ -45,22 +42,18 @@ export default function Chat() {
         <h2>Real-Time Chat</h2>
 
         <div className="message-box" id="messageBox">
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              className="message"
-              style={{
-                backgroundColor:
-                  msg.username === username ? "#007bff" : "#e0f7fa",
-                color: msg.username === username ? "white" : "black",
-                alignSelf:
-                  msg.username === username ? "flex-end" : "flex-start",
-              }}
-            >
-              <strong>{msg.username}: </strong>
-              {msg.text}
-            </div>
-          ))}
+          {messages.map((msg, index) => {
+            const isMine = msg.senderId === socket.id;
+
+            return (
+              <div
+                key={index}
+                className={`message ${isMine ? "my-message" : "other-message"}`}
+              >
+                <strong>{isMine ? "You" : "User"}:</strong> {msg.text}
+              </div>
+            );
+          })}
         </div>
 
         <div className="input-container">
