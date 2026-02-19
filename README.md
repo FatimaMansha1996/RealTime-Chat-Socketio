@@ -16,10 +16,11 @@ Backup Setup Instructions:
 
 
 Frontend Setup Instruction:
-1)cd client
-2)npm install
-3)npm run dev
-4)Client will run on: http://localhost:5173
+1)open another terminal
+2)cd client
+3)npm install
+4)npm run dev
+5)Client will run on: http://localhost:5173
 
 
 
